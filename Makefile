@@ -1,24 +1,39 @@
-NAME = libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/12/07 04:05:39 by aalhalab          #+#    #+#              #
+#    Updated: 2023/12/08 02:00:29 by aalhalab         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-SRCS =  main.c ft_printf_d.c
+NAME        =   libftprintf.a
+CC          =   cc
+SRC         =   c.c q.c
+OBJ         =   $(SRC:%.c=%.o)
+LIBFT		=   libft.a
 
-OBJS = $(SRCS:.c=.o)
+all: $(NAME)
 
-CC = cc
+$(NAME): $(OBJ) $(LIBFT)
+	@ar -rc $@ $<
 
-CFLAGS = -Wall -Wextra -Werror
-
-all:	$(NAME)
-
-$(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+$(LIBFT):
+	@make -C ./libft
+	@mv ./libft/$@ ./
 
 clean:
-	rm -f $(OBJS) 
+	@rm -rf $(OBJ)
+	@make -C ./libft fclean
+	@rm -rf $(LIBFT)
+	@echo "cleaning"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -rf $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
 
-
+.PHONY: all fclean clean re
