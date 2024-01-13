@@ -6,13 +6,13 @@
 #    By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 04:05:39 by aalhalab          #+#    #+#              #
-#    Updated: 2023/12/08 02:00:29 by aalhalab         ###   ########.fr        #
+#    Updated: 2023/12/17 05:41:37 by aalhalab         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME        =   libftprintf.a
 CC          =   cc
-SRC         =   c.c q.c
+SRC         =   c.c
 OBJ         =   $(SRC:%.c=%.o)
 LIBFT		=   libft.a
 
