@@ -8,15 +8,14 @@
 
 int ft_printf(const char *c, ...);
 void	read_case(char	*c, va_list list);
-void execute_char(va_list list);
-void execute_string(va_list list);
-void execute_int(va_list list);
-void execute_unsigned_int(va_list list);
-void execute_pointer(va_list list);
-void execute_hex(va_list list);
-void execute_hex_upper(va_list list);
-void execute_percent(void);
-void ft_putnbr_hex(unsigned long long n);
-void ft_putnbr_hex_upper(unsigned long long n);
+void	printf_c(va_list list);
+void	printf_s(va_list list);
+void	printf_p(va_list list);
+void	printf_d(va_list list);
+void	printf_i(va_list list);
+void	printf_u(va_list list);
+void	printf_x(va_list list);
+void	printf_x_upper(va_list list);
+void	printf_percent(va_list list);
 
 #endif
