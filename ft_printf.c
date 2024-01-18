@@ -6,13 +6,13 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:06:04 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/16 12:07:08 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:23:43 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	read_case(char	*c, va_list list)
+void	read_case(char	*c, va_list list, int *count)
 {
 			if (*c == 'c')
 			printf_c(list);
@@ -31,14 +31,14 @@ void	read_case(char	*c, va_list list)
 			else if (*c == '%')
 			printf_percent();
 			else
-			write(1, "error\n", 6);
+			ft_putstr("error", count);
 }
 int ft_printf(const char *c, ...)
 {
 	va_list	list;
 	va_start(list, c);
 	int count;
-	
+
 	count = 0;
 	while (*c)
 	{
@@ -48,11 +48,15 @@ int ft_printf(const char *c, ...)
 			read_case((char *)c, list);
 		}
 		else
-			write(1, c, 1);
+			ft_putchar(*c, &count);
 		c++;
-		count++;
 	}
-	return (count);
+	
 	va_end(list);
+	return count;
+}
+int main()
+{
+	printf("%d",ft_printf("hello"));
 	return 0;
 }

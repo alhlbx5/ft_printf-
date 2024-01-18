@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/16 15:43:47 by aalhalab          #+#    #+#             */
+/*   Updated: 2024/01/16 16:25:57 by aalhalab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
@@ -17,5 +29,9 @@ void	printf_u(va_list list);
 void	printf_x(va_list list);
 void	printf_x_upper(va_list list);
 void	printf_percent(va_list list);
+void	ft_putnbr_hex(unsigned long long n);
+void	ft_putnbr_fd(int n, int fd);
+void	ft_putchar(char c, int *count)
+void	ft_putstr(char *s, int *count);
 
 #endif

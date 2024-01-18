@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_x_upper.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 11:39:26 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/16 16:25:10 by aalhalab         ###   ########.fr       */
+/*   Created: 2023/10/31 21:26:43 by aalhalab          #+#    #+#             */
+/*   Updated: 2024/01/16 16:15:02 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putnbr_hex_upper(unsigned long long n, int *count)
+void	ft_putnbr_fd(int n, int fd)
 {
-    char *hex;
-    
-    hex =  "0123456789ABCDEF";
-    if (n >= 16)
-    {
-        ft_putnbr_hex_upper(n / 16);
-        ft_putnbr_hex_upper(n % 16);
-    }
-    else
-        ft_putchar(hex[n], count);
-}
+	int	i;
 
-void printf_x_upper(va_list list)
-{
-	unsigned int x = va_arg(list, unsigned int);
-	ft_putnbr_hex_upper(x);
-}	
+	i = 0;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		if (n == -2147483648)
+		{
+			i = 1;
+			n++;
+		}
+		n = -n;
+	}
+	if (n > 9)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd(n % 10 + '0' + i, fd);
+}

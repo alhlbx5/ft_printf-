@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_x_upper.c                                   :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 11:39:26 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/16 16:25:10 by aalhalab         ###   ########.fr       */
+/*   Created: 2024/01/16 16:14:39 by aalhalab          #+#    #+#             */
+/*   Updated: 2024/01/17 16:57:38 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void ft_putnbr_hex_upper(unsigned long long n, int *count)
+void	ft_putchar(char c, int *count)
 {
-    char *hex;
-    
-    hex =  "0123456789ABCDEF";
-    if (n >= 16)
-    {
-        ft_putnbr_hex_upper(n / 16);
-        ft_putnbr_hex_upper(n % 16);
-    }
-    else
-        ft_putchar(hex[n], count);
+	write(1, &c, 1);
+	*count = *count + 1;
 }
 
-void printf_x_upper(va_list list)
+void	ft_putstr(char *c, int *count)
 {
-	unsigned int x = va_arg(list, unsigned int);
-	ft_putnbr_hex_upper(x);
-}	
+	int i;
+
+	i = 0;
+	while (c[i] != '\0')
+	{
+		ft_putchar(c[i], count);
+		i++;
+	}
+}
