@@ -6,7 +6,7 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:06:04 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/16 12:07:08 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/01/18 15:48:58 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	read_case(char	*c, va_list list)
 {
+		int count;
+		
+		count = 0;
 			if (*c == 'c')
 			printf_c(list);
 			else if (*c == 's')
@@ -29,7 +32,7 @@ void	read_case(char	*c, va_list list)
 			else if (*c == 'X')
 			printf_x_upper(list);
 			else if (*c == '%')
-			printf_percent();
+			count += write(1, "%", 1);
 			else
 			write(1, "error\n", 6);
 }
@@ -37,9 +40,7 @@ int ft_printf(const char *c, ...)
 {
 	va_list	list;
 	va_start(list, c);
-	int count;
 	
-	count = 0;
 	while (*c)
 	{
 		if (*c	 == '%')
@@ -52,7 +53,6 @@ int ft_printf(const char *c, ...)
 		c++;
 		count++;
 	}
-	return (count);
 	va_end(list);
-	return 0;
+	return (count);
 }
