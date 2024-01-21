@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_c.c                                      :+:      :+:    :+:   */
+/*   printf_c.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aalhalab <aalhalab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/12 21:24:33 by aalhalab          #+#    #+#             */
-/*   Updated: 2023/11/15 11:37:15 by aalhalab         ###   ########.fr       */
+/*   Created: 2024/01/16 11:33:58 by aalhalab          #+#    #+#             */
+/*   Updated: 2024/01/21 16:15:27 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	printf_c(char	c)
+int ft_printf_c(va_list list)
 {
-	if (write(1, &c, 1) == -1);
-		return (-1);
+	int count;
 	
+	count = 0;
+	char x = va_arg(list, int);
+	count += write(1, &x, 1);
+	return count;
 }
