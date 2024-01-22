@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr_hex_upper.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/16 11:36:00 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/22 15:52:17 by aalhalab         ###   ########.fr       */
+/*   Created: 2024/01/22 17:48:11 by aalhalab          #+#    #+#             */
+/*   Updated: 2024/01/22 20:39:58 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf_d(va_list list, int *count)
+int ft_putnbr_hex_upper(unsigned long long n, int *count)
 {
-	int x = va_arg(list, int);
-	return (ft_putnbr_fd(x, 1, count));
+    char *hex;    
+
+    hex =  "0123456789ABCDEF";
+    if (n >= 16)
+    {
+        ft_putnbr_hex_upper(n / 16, count);
+        ft_putnbr_hex_upper(n % 16, count);
+    }
+    else
+        *count += write(1, &hex[n], 1);
+
+    return (0);
 }

@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_s.c                                         :+:      :+:    :+:   */
+/*   ft_printf_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 11:36:09 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/21 16:16:10 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:12:41 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_printf_s(va_list list)
+int ft_printf_s(va_list list, int *count)
 {
-	int count;
 	char *x = va_arg(list, char *);
-	
-	count = 0;
+	if (!x)
+		x = "(null)";
 	while (*x)
 	{
-		count += write(1, x, 1);
+		*count += write(1, x, 1);
 		x++;
 	}
-	return count;
+	return (0);
 }
