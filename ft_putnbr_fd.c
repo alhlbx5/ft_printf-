@@ -6,13 +6,13 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 15:50:06 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/22 20:57:43 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:48:49 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putnbr_fd(long long int	n, int	fd, int *count)
+int	ft_putnbr_fd(long long int n, int fd, int	*count)
 {
 	if (n > 9)
 	{
@@ -25,8 +25,7 @@ int ft_putnbr_fd(long long int	n, int	fd, int *count)
 		*count += write (1, "-", fd);
 		ft_putnbr_fd(n, fd, count);
 	}
-	else
-	if (n <= 9 && n >= 0)
+	else if (n <= 9 && n >= 0)
 	{
 		n = n + 48;
 		*count += write (1, &n, fd);

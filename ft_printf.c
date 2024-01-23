@@ -6,13 +6,13 @@
 /*   By: aalhalab <aalhalab@student.42heilbronn.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 04:06:04 by aalhalab          #+#    #+#             */
-/*   Updated: 2024/01/22 21:09:03 by aalhalab         ###   ########.fr       */
+/*   Updated: 2024/01/23 17:40:29 by aalhalab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	read_case(const char *c, va_list list, int	*count)
+int	read_case(const char *c, va_list list, int *count)
 {
 	if (*c == 'c')
 		ft_printf_c(list, count);
@@ -32,16 +32,17 @@ int	read_case(const char *c, va_list list, int	*count)
 		*count += write(1, "%", 1);
 	return (0);
 }
-int ft_printf(const char *c, ...)
+
+int	ft_printf(const char *c, ...)
 {
 	va_list	list;
-	va_start(list, c);
-	int count;
+	int		count;
 
+	va_start(list, c);
 	count = 0;
 	while (*c)
 	{
-		if (*c	 == '%')
+		if (*c == '%')
 		{
 			c++;
 			read_case((char *)c, list, &count);
@@ -55,7 +56,7 @@ int ft_printf(const char *c, ...)
 }
 // int main()
 // {
-// 	ft_printf("%d\n",ft_printf("%x\n", 12314)); 
+// 	ft_printf("%d\n",ft_printf("%x\n", 12314));
 // 	printf("%d\n",printf("%x\n", 12314));
 // 	return 0;
 // }
